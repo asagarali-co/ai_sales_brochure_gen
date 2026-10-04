@@ -2,8 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Page Reader",
-  description: "Summarize sites, draft company brochures, and ask technical questions.",
+  title: "AI Sales Brochure Generator",
+  applicationName: "AI Sales Brochure Generator",
+  description: "Create sales brochure drafts from company websites with AI. Summarize public pages and get clear answers in one content workspace.",
+  icons: {
+    icon: [{ url: "/logo.svg", type: "image/svg+xml", sizes: "any" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  openGraph: {
+    title: "AI Sales Brochure Generator",
+    description: "Turn company websites into sales brochure drafts with AI.",
+    siteName: "AI Sales Brochure Generator",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "AI Sales Brochure Generator",
+    description: "Turn company websites into sales brochure drafts with AI.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

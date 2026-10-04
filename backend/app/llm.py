@@ -1,22 +1,34 @@
 import json
 from typing import Iterator
 
+from fastapi import HTTPException
 from openai import OpenAI
 
 from app.config import settings
 
-_client = OpenAI(api_key=settings.api_key, base_url=settings.base_url)
+
+def _client() -> OpenAI:
+    require_api_key()
+    return OpenAI(api_key=settings.api_key, base_url=settings.base_url)
+
+
+def require_api_key() -> None:
+    if not settings.api_key:
+        raise HTTPException(
+            status_code=503,
+            detail="DEEPSEEK_API_KEY is not set. Add it to backend/.env or your shell environment.",
+        )
 
 
 def chat(messages: list[dict]) -> str:
     """One request, one full answer."""
-    response = _client.chat.completions.create(model=settings.model, messages=messages)
+    response = _client().chat.completions.create(model=settings.model, messages=messages)
     return response.choices[0].message.content
 
 
 def chat_json(messages: list[dict]) -> dict:
     """Ask for a JSON object. The word 'JSON' must appear in the prompt."""
-    response = _client.chat.completions.create(
+    response = _client().chat.completions.create(
         model=settings.model,
         messages=messages,
         response_format={"type": "json_object"},
@@ -29,7 +41,7 @@ def chat_json(messages: list[dict]) -> dict:
 
 def stream(messages: list[dict]) -> Iterator[str]:
     """Yield the answer piece by piece as the model generates it."""
-    response = _client.chat.completions.create(
+    response = _client().chat.completions.create(
         model=settings.model, messages=messages, stream=True
     )
     try:

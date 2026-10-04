@@ -10,6 +10,7 @@ router = APIRouter(tags=["ask"])
 
 @router.post("/ask")
 def ask(body: AskIn):
+    llm.require_api_key()
     messages = [
         {"role": "system", "content": ASK_SYSTEM},
         {"role": "user", "content": body.question},

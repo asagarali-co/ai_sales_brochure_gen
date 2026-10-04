@@ -42,6 +42,7 @@ def gather_pages(url: str) -> str:
 @router.post("/brochure")
 def brochure(body: BrochureIn):
     """Step 3: stream the brochure."""
+    llm.require_api_key()
     user_prompt = (
         f"You are looking at a company called: {body.company_name}\n"
         "Here are the contents of its landing page and other relevant pages; "
