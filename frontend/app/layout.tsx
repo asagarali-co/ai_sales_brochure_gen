@@ -2,24 +2,31 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Sales Brochure Generator",
+  title: "Free AI Sales Brochure Generator",
   applicationName: "AI Sales Brochure Generator",
-  description: "Create sales brochure drafts from company websites with AI. Summarize public pages and get clear answers in one content workspace.",
+  description: "Create free AI sales brochure drafts from company websites. Summarize public pages and get clear answers in one content workspace.",
+  keywords: [
+    "free AI sales brochure generator",
+    "AI brochure generator",
+    "sales brochure generator",
+    "free brochure maker",
+    "company brochure AI",
+  ],
   icons: {
     icon: [{ url: "/logo.svg", type: "image/svg+xml", sizes: "any" }],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
-    title: "AI Sales Brochure Generator",
-    description: "Turn company websites into sales brochure drafts with AI.",
+    title: "Free AI Sales Brochure Generator",
+    description: "Turn company websites into free sales brochure drafts with AI.",
     siteName: "AI Sales Brochure Generator",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "AI Sales Brochure Generator",
-    description: "Turn company websites into sales brochure drafts with AI.",
+    title: "Free AI Sales Brochure Generator",
+    description: "Turn company websites into free sales brochure drafts with AI.",
   },
 };
 
